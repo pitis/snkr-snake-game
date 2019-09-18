@@ -92,13 +92,13 @@ export default class Game extends Phaser.Scene {
     //  Check which key was just pressed down, then change the direction the
     //  snake is heading.
     if (Phaser.Input.Keyboard.JustDown(leftKey)) {
-      this.snake.turnLeft()
+      this.snake.turnSnake('left')
     } else if (Phaser.Input.Keyboard.JustDown(rightKey)) {
-      this.snake.turnRight()
+      this.snake.turnSnake('right')
     } else if (Phaser.Input.Keyboard.JustDown(upKey)) {
-      this.snake.turnUp()
+      this.snake.turnSnake('up')
     } else if (Phaser.Input.Keyboard.JustDown(downKey)) {
-      this.snake.turnDown()
+      this.snake.turnSnake('down')
     }
   }
 

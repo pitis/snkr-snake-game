@@ -1,6 +1,6 @@
-import {WIDTH, HEIGHT, LENGTH} from '@/constants/grid';
-import Food from '@/objects/food';
-import Snake from '@/objects/snake';
+import { WIDTH, HEIGHT, LENGTH } from '@/constants/grid'
+import Food from '@/objects/food'
+import Snake from '@/objects/snake'
 
 export default class Maze extends Phaser.Scene {
   /**
@@ -15,13 +15,15 @@ export default class Maze extends Phaser.Scene {
 
       //  Make the viewport an exact fit of the game board, giving a margin of
       //  half the grid length (8px) around its edges.
-      cameras: [{
-        x: LENGTH / 2,
-        y: 2 * LENGTH,
-        width: WIDTH * LENGTH,
-        height: HEIGHT * LENGTH
-      }]
-    });
+      cameras: [
+        {
+          x: LENGTH / 2,
+          y: 2 * LENGTH,
+          width: WIDTH * LENGTH,
+          height: HEIGHT * LENGTH
+        }
+      ]
+    })
   }
 
   //  ------------------------------------------------------------------------
@@ -35,7 +37,7 @@ export default class Maze extends Phaser.Scene {
    *  @return {Food} The food sprite.
    */
   addFood(x = 0, y = x) {
-    return new Food(this, x, y);
+    return new Food(this, x, y)
   }
 
   /**
@@ -46,7 +48,7 @@ export default class Maze extends Phaser.Scene {
    *  @param {number} [y=x] - The vetical grid coordinate.
    *  @return {Snake} The snake sprite.
    */
-  addSnake(x = 0, y = x) {
-    return new Snake(this, x, y);
+  addSnake(x = 0, y = 0) {
+    return new Snake(this, x, y)
   }
 }

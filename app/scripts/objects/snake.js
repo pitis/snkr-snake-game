@@ -1,5 +1,26 @@
 import { WIDTH, HEIGHT, LENGTH } from '@/constants/grid'
 
+var Direction = {
+  left: 'left',
+  right: 'right',
+  up: 'up',
+  down: 'down'
+}
+
+var KeyboardInput = {
+  // Changing the direciton to the corresponding key.
+  CheckDirection: function() {
+    if (cursors.right.isDown && Snake.direction != Direction.left)
+      Snake.direction = Direction.right
+    else if (cursors.left.isDown && Snake.direction != Direction.right)
+      Snake.direction = Direction.left
+    else if (cursors.up.isDown && Snake.direction != Direction.down)
+      Snake.direction = Direction.up
+    else if (cursors.down.isDown && Snake.direction != Direction.up)
+      Snake.direction = Direction.down
+  }
+}
+
 export default class Snake {
   /**
    *  Handles the logic and appearance of the snake in the maze.
@@ -17,6 +38,7 @@ export default class Snake {
     this.head = this.body.create(x * LENGTH, y * LENGTH)
 
     this.direction = new Phaser.Geom.Point(LENGTH, 0)
+    this.directionPath = Direction.right
     this.headPosition = new Phaser.Geom.Point(0, 0)
     this.tailPosition = new Phaser.Geom.Point(0, 0)
 
@@ -47,10 +69,39 @@ export default class Snake {
    *
    *  @public
    */
+
+  turnSnake(direct) {
+    if (this.updated) {
+      switch (direct) {
+        case 'left':
+          if (this.directionPath == 'up') this.turnLeft()
+          if (this.directionPath == 'down') this.turnRight()
+          this.directionPath = 'left'
+
+          break
+        case 'right':
+          if (this.directionPath == 'up') this.turnRight()
+          if (this.directionPath == 'down') this.turnLeft()
+          this.directionPath = 'right'
+          break
+        case 'up':
+          if (this.directionPath == 'left') this.turnRight()
+          if (this.directionPath == 'right') this.turnLeft()
+          this.directionPath = 'up'
+          break
+        case 'down':
+          if (this.directionPath == 'left') this.turnLeft()
+          if (this.directionPath == 'right') this.turnRight()
+          this.directionPath = 'down'
+      }
+      this.updated = false
+      console.log(this.directionPath)
+    }
+  }
+
   turnLeft() {
     if (this.updated) {
       this.direction.setTo(this.direction.y, -this.direction.x)
-
       this.updated = false
     }
   }
@@ -63,21 +114,6 @@ export default class Snake {
   turnRight() {
     if (this.updated) {
       this.direction.setTo(-this.direction.y, this.direction.x)
-
-      this.updated = false
-    }
-  }
-
-  turnUp() {
-    if (this.updated) {
-      this.direction.setTo(-this.direction.y, -this.direction.x)
-      this.updated = false
-    }
-  }
-
-  turnDown() {
-    if (this.updated) {
-      this.direction.setTo(-this.direction.y, -this.direction.x)
       this.updated = false
     }
   }
