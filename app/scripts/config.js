@@ -16,6 +16,7 @@ import * as scenes from '@/scenes'
  *  Game canvas width.
  */
 export const width = 640
+//export const width = window.screen.availWidth
 
 /**
  *  Game canvas height.

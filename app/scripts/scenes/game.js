@@ -135,6 +135,14 @@ export default class Game extends Phaser.Scene {
     //  Update the high score.
     this.highScore = Math.max(this.points, this.highScore)
 
+    //insert values in DB
+    axios
+      .post('http://localhost:8000/scores', {
+        name: 'from the game',
+        score: this.points
+      })
+      .then(res => console.log('posted'))
+
     //  Wait for a moment and go back to the menu screen.
     this.time.delayedCall(2500, () => {
       this.scene
