@@ -48,6 +48,5 @@
   },
   "author": "DancoVision",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/pitis/snkr-snake-game#readme",
-  "proxy": "http://localhost:8000"
+  "homepage": "https://bitbucket.org/pitis/snkr-snake-game#readme"
 }
