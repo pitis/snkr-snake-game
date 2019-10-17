@@ -137,7 +137,7 @@ export default class Game extends Phaser.Scene {
 
     //insert values in DB
     axios
-      .post('http://localhost:8000/scores', {
+      .post('http://localhost:5000/scores', {
         name: 'from the game',
         score: this.points
       })
