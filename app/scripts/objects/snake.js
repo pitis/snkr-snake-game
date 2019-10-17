@@ -76,22 +76,28 @@ export default class Snake {
         case 'left':
           if (this.directionPath == 'up') this.turnLeft()
           if (this.directionPath == 'down') this.turnRight()
+          if (this.directionPath == 'left' || this.directionPath == 'right')
+            return
           this.directionPath = 'left'
 
           break
         case 'right':
           if (this.directionPath == 'up') this.turnRight()
           if (this.directionPath == 'down') this.turnLeft()
+          if (this.directionPath == 'left' || this.directionPath == 'right')
+            return
           this.directionPath = 'right'
           break
         case 'up':
           if (this.directionPath == 'left') this.turnRight()
           if (this.directionPath == 'right') this.turnLeft()
+          if (this.directionPath == 'up' || this.directionPath == 'down') return
           this.directionPath = 'up'
           break
         case 'down':
           if (this.directionPath == 'left') this.turnLeft()
           if (this.directionPath == 'right') this.turnRight()
+          if (this.directionPath == 'up' || this.directionPath == 'down') return
           this.directionPath = 'down'
       }
       this.updated = false
