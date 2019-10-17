@@ -24,7 +24,7 @@ export default class Menu extends Phaser.Scene {
 
     //  Use a bitmap text object as the face of our start button.
     const startButton = this.add
-      .bitmapText(x - 160, y + 80, 'font', 'START')
+      .bitmapText(x, y + 20, 'font', 'START')
       .setOrigin(0.5, 1)
 
     //  Apply a blink effect to the button using a custom easing function.
@@ -50,15 +50,35 @@ export default class Menu extends Phaser.Scene {
       .setInteractive()
       .once('pointerup', () => this.scene.start('Game'))
 
+    this.add.zone()
+
     //  Get the last game high score.
     const { highScore } = this.scene.get('Game')
 
+    // Display leaderboard
+    const leaderboardButton = this.add
+      .bitmapText(x, y + 80, 'font', 'LEADERBOARD')
+      .setOrigin(0.5, 2)
+    this.add
+      .zone(
+        leaderboardButton.x -
+          leaderboardButton.width * leaderboardButton.originX -
+          16,
+        leaderboardButton.y -
+          leaderboardButton.height * leaderboardButton.originY -
+          16,
+        leaderboardButton.width + 32,
+        leaderboardButton.height + 32
+      )
+      .setOrigin(0, 0)
+      .setInteractive()
+      .once('pointerup', () => this.scene.start('Leaderboard'))
+
+    this.add.zone()
     //  Display the registered highest score of the game.
+    this.add.bitmapText(x, y + 100, 'font', `YOUR HIGH SCORE`).setOrigin(0.5, 1)
     this.add
-      .bitmapText(x + 160, y + 80, 'font', 'YOUR HIGH SCORE')
-      .setOrigin(0.5, 1)
-    this.add
-      .bitmapText(x + 160, y + 81, 'font', `${highScore} POINTS`)
-      .setOrigin(0.5, 0)
+      .bitmapText(x, y + 150, 'font', `${highScore} POINTS`)
+      .setOrigin(0.5, 2)
   }
 }

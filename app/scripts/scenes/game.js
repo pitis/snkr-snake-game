@@ -48,6 +48,7 @@ export default class Game extends Phaser.Scene {
     //  Get a reference of the scenes to start.
     const scoreboard = this.scene.get('Scoreboard')
     const maze = this.scene.get('Maze')
+    const leaderboard = this.scene.get('Leaderboard')
 
     //  Run both scenes in parallel.
     this.scene.launch(scoreboard, { gameScene: this }).launch(maze)
@@ -137,7 +138,7 @@ export default class Game extends Phaser.Scene {
 
     //insert values in DB
     axios
-      .post('http://http://68.183.3.32:5000/scores', {
+      .post('http://68.183.3.32:5000/scores', {
         name: 'from the game',
         score: this.points
       })
@@ -148,6 +149,7 @@ export default class Game extends Phaser.Scene {
       this.scene
         .stop('Scoreboard')
         .stop('Maze')
+        .stop('Leaderboard')
         .start('Menu')
     })
   }
