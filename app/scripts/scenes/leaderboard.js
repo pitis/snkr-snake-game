@@ -8,6 +8,13 @@ export default class Leaderboard extends Phaser.Scene {
     super({ key: 'Leaderboard' })
   }
 
+  preload() {
+    this.load.html('nameform', 'nameform.html')
+    // var inputName = document.createElement('input')
+    // var domElement = this.loadadd.dom(300, 0, inputName)
+    // this.scene.add.do
+  }
+
   /**
    *  Responsible for setting up the game objects on the screen.
    *
@@ -18,13 +25,12 @@ export default class Leaderboard extends Phaser.Scene {
     //  Save viewport center coordinates for reference.
     const x = this.cameras.main.width / 2
     const y = this.cameras.main.height / 2
-
     //  Place the Title image above the middle of the screen.
     //this.add.image(x, y - 80, 'title')
 
     let scores
     axios
-      .get('http://68.183.3.32:5000/leaderboard')
+      .get('https://snake.sneakerindustry.ro:5000/leaderboard')
       .then(res => {
         scores = res.data
       })

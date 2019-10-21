@@ -19,6 +19,7 @@ export default class Menu extends Phaser.Scene {
     const x = this.cameras.main.width / 2
     const y = this.cameras.main.height / 2
 
+    let inputName = document.getElementById('snakeName').value
     //  Place the Title image above the middle of the screen.
     this.add.image(x, y - 80, 'title')
 
@@ -48,7 +49,11 @@ export default class Menu extends Phaser.Scene {
       )
       .setOrigin(0, 0)
       .setInteractive()
-      .once('pointerup', () => this.scene.start('Game'))
+      .once('pointerup', () => {
+        if (inputName) {
+          this.scene.start('Game')
+        } else this.scene.start('ChooseName')
+      })
 
     this.add.zone()
 

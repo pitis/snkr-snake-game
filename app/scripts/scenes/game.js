@@ -13,6 +13,8 @@ export default class Game extends Phaser.Scene {
    *
    *  @extends Phaser.Scene
    */
+  preload() {}
+
   constructor() {
     super({ key: 'Game' })
 
@@ -137,12 +139,19 @@ export default class Game extends Phaser.Scene {
     this.highScore = Math.max(this.points, this.highScore)
 
     //insert values in DB
+    this.snake.name = document.getElementById('snakeName').value
     axios
-      .post('http://68.183.3.32:5000/scores', {
-        name: 'from the game',
+      .post('https://snake.sneakerindustry.ro:5000/scores', {
+        name: this.snake.name.toUpperCase(),
         score: this.points
       })
-      .then(res => console.log('posted'))
+      .then(
+        res => console.log('posted')
+        // console.log({
+        //   name: this.snake.name.toUpperCase(),
+        //   score: this.points
+        // })
+      )
 
     //  Wait for a moment and go back to the menu screen.
     this.time.delayedCall(2500, () => {

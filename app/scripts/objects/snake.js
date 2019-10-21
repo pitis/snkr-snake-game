@@ -42,6 +42,7 @@ export default class Snake {
     this.headPosition = new Phaser.Geom.Point(0, 0)
     this.tailPosition = new Phaser.Geom.Point(0, 0)
 
+    this.name = null
     this.alive = true
     this.updated = true
     this.moveTime = 0
@@ -101,7 +102,7 @@ export default class Snake {
           this.directionPath = 'down'
       }
       this.updated = false
-      console.log(this.directionPath)
+      // console.log(this.directionPath)
     }
   }
 

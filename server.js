@@ -21,6 +21,9 @@ app.use(express.static('public'))
 app.use(express.json())
 app.use(cors())
 
+// var https = require('https')
+// var server = https.createServer(options, app).listen(5000)
+
 app.get('/scores', (req, res) => {
   let sql = 'select name, score from scores;'
   db.query(sql, (err, result) => {
