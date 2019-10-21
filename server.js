@@ -67,7 +67,7 @@ https
     {
       key: fs.readFileSync('./key.pem'),
       cert: fs.readFileSync('./cert.pem'),
-      passphrase: 'lmaoop'
+      passphrase: 'snakeind'
     },
     app
   )
