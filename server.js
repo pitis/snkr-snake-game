@@ -5,6 +5,7 @@ const app = express()
 const mysql = require('mysql')
 const cors = require('cors')
 const https = require('https')
+const fs = require('fs')
 
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -57,6 +58,19 @@ const port = process.env.PORT || 5000
 //   console.log(`Server listening at port ${port}`)
 // })
 
-https.createServer(app).listen(port, 1, () => {
-  console.log(`Server listening at port ${port}`)
-})
+// http.createServer(app).listen(port, 1, () => {
+//   console.log(`Server listening at port ${port} without SSL`)
+// })
+
+https
+  .createServer(
+    {
+      key: fs.readFileSync('./key.pem'),
+      cert: fs.readFileSync('./cert.pem'),
+      passphrase: 'lmaoop'
+    },
+    app
+  )
+  .listen(port, 1, () => {
+    console.log(`Server listening at port ${port} with SSL`)
+  })
