@@ -4,6 +4,7 @@ const express = require('express')
 const app = express()
 const mysql = require('mysql')
 const cors = require('cors')
+const https = require('https')
 
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -20,9 +21,6 @@ db.connect(err => {
 app.use(express.static('public'))
 app.use(express.json())
 app.use(cors())
-
-// var https = require('https')
-// var server = https.createServer(options, app).listen(5000)
 
 app.get('/scores', (req, res) => {
   let sql = 'select name, score from scores;'
@@ -55,6 +53,10 @@ app.post('/scores', (req, res) => {
 
 const port = process.env.PORT || 5000
 
-app.listen(port, () => {
+// app.listen(port, () => {
+//   console.log(`Server listening at port ${port}`)
+// })
+
+https.createServer(app).listen(port, 1, () => {
   console.log(`Server listening at port ${port}`)
 })
