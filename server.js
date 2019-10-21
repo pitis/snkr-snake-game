@@ -62,15 +62,25 @@ const port = process.env.PORT || 5000
 //   console.log(`Server listening at port ${port} without SSL`)
 // })
 
-https
-  .createServer(
-    {
-      key: fs.readFileSync('./key.pem'),
-      cert: fs.readFileSync('./cert.pem'),
-      passphrase: 'snakeind'
-    },
-    app
-  )
-  .listen(port, 1, () => {
-    console.log(`Server listening at port ${port} with SSL`)
-  })
+// Certificate
+const privateKey = fs.readFileSync(
+  '/etc/letsencrypt/live/yourdomain.com/privkey.pem',
+  'utf8'
+)
+const certificate = fs.readFileSync(
+  '/etc/letsencrypt/live/yourdomain.com/cert.pem',
+  'utf8'
+)
+const ca = fs.readFileSync(
+  '/etc/letsencrypt/live/yourdomain.com/chain.pem',
+  'utf8'
+)
+
+const credentials = {
+  key: privateKey,
+  cert: certificate,
+  ca: ca
+}
+https.createServer(credentials, app).listen(port, 1, () => {
+  console.log(`Server listening at port ${port} with SSL`)
+})

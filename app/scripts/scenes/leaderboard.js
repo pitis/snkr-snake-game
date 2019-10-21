@@ -8,13 +8,6 @@ export default class Leaderboard extends Phaser.Scene {
     super({ key: 'Leaderboard' })
   }
 
-  preload() {
-    this.load.html('nameform', 'nameform.html')
-    // var inputName = document.createElement('input')
-    // var domElement = this.loadadd.dom(300, 0, inputName)
-    // this.scene.add.do
-  }
-
   /**
    *  Responsible for setting up the game objects on the screen.
    *
