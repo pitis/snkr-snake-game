@@ -19,7 +19,7 @@ db.connect(err => {
   console.log('MySQL Connection successful...')
 })
 
-app.use(express.static('public'))
+app.use(express.static('dist'))
 app.use(express.json())
 app.use(cors())
 
@@ -54,14 +54,6 @@ app.post('/scores', (req, res) => {
 
 const port = process.env.PORT || 5000
 
-// app.listen(port, () => {
-//   console.log(`Server listening at port ${port}`)
-// })
-
-// http.createServer(app).listen(port, 1, () => {
-//   console.log(`Server listening at port ${port} without SSL`)
-// })
-
 // Certificate
 const privateKey = fs.readFileSync(
   '/etc/letsencrypt/live/snake.sneakerindustry.ro/privkey.pem',
@@ -81,6 +73,7 @@ const credentials = {
   cert: certificate,
   ca: ca
 }
+
 https.createServer(credentials, app).listen(port, 1, () => {
   console.log(`Server listening at port ${port} with SSL`)
 })
