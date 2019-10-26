@@ -8,7 +8,7 @@
     "dist": "gulp dist",
     "format": "eslint \"{app,gulpfile.js}/**/*.js\" --fix",
     "lint": "eslint \"{app,gulpfile.js}/**/*.js\"",
-    "start": "nodemon server.js"
+    "start": "npm run dist & nodemon server.js"
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",

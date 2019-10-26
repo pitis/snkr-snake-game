@@ -54,26 +54,28 @@ app.post('/scores', (req, res) => {
 
 const port = process.env.PORT || 5000
 
-// Certificate
-const privateKey = fs.readFileSync(
-  '/etc/letsencrypt/live/snake.sneakerindustry.ro/privkey.pem',
-  'utf8'
-)
-const certificate = fs.readFileSync(
-  '/etc/letsencrypt/live/snake.sneakerindustry.ro/cert.pem',
-  'utf8'
-)
-const ca = fs.readFileSync(
-  '/etc/letsencrypt/live/snake.sneakerindustry.ro/chain.pem',
-  'utf8'
-)
+app.listen(port, () => console.log(`Server running on ${port}`))
 
-const credentials = {
-  key: privateKey,
-  cert: certificate,
-  ca: ca
-}
+// // Certificate
+// const privateKey = fs.readFileSync(
+//   '/etc/letsencrypt/live/snake.sneakerindustry.ro/privkey.pem',
+//   'utf8'
+// )
+// const certificate = fs.readFileSync(
+//   '/etc/letsencrypt/live/snake.sneakerindustry.ro/cert.pem',
+//   'utf8'
+// )
+// const ca = fs.readFileSync(
+//   '/etc/letsencrypt/live/snake.sneakerindustry.ro/chain.pem',
+//   'utf8'
+// )
 
-https.createServer(credentials, app).listen(port, 1, () => {
-  console.log(`Server listening at port ${port} with SSL`)
-})
+// const credentials = {
+//   key: privateKey,
+//   cert: certificate,
+//   ca: ca
+// }
+
+// https.createServer(credentials, app).listen(port, 1, () => {
+//   console.log(`Server listening at port ${port} with SSL`)
+// })
