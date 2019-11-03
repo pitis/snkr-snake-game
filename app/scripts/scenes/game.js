@@ -141,7 +141,7 @@ export default class Game extends Phaser.Scene {
     //insert values in DB
     this.snake.name = document.getElementById('snakeName').value
     axios
-      .post('https://snake.sneakerindustry.ro/scores', {
+      .post('/scores', {
         name: this.snake.name.toUpperCase(),
         score: this.points
       })

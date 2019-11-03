@@ -23,7 +23,7 @@ export default class Leaderboard extends Phaser.Scene {
 
     let scores
     axios
-      .get('https://snake.sneakerindustry.ro/leaderboard')
+      .get('/leaderboard')
       .then(res => {
         scores = res.data
       })

@@ -4,8 +4,6 @@ const express = require('express')
 const app = express()
 const mysql = require('mysql')
 const cors = require('cors')
-const https = require('https')
-const fs = require('fs')
 
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
