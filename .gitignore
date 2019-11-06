@@ -1,13 +1,3 @@
-.*
-*.log
-Thumbs.db
-Session.vim
-
-dist/
-node_modules/
-
-!.git*
-!.babelrc
-!.eslint*
-!.yo-rc.json
-!.editorconfig
+dist
+node_modules
+.env

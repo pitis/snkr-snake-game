@@ -1,4 +1,4 @@
-import fontConfig from '@/constants/bitmap-fonts';
+import fontConfig from '@/constants/bitmap-fonts'
 
 export default class Loader extends Phaser.Scene {
   /**
@@ -7,7 +7,7 @@ export default class Loader extends Phaser.Scene {
    *  @extends Phaser.Scene
    */
   constructor() {
-    super({key: 'Loader'});
+    super({ key: 'Loader' })
   }
 
   /**
@@ -16,7 +16,7 @@ export default class Loader extends Phaser.Scene {
    *  @protected
    */
   preload() {
-    this.load.image(['body', 'food', 'font', 'frame', 'title']);
+    this.load.image(['body', 'food', 'font', 'frame', 'title'])
   }
 
   /**
@@ -30,9 +30,9 @@ export default class Loader extends Phaser.Scene {
     this.cache.bitmapFont.add(
       fontConfig.image,
       Phaser.GameObjects.RetroFont.Parse(this, fontConfig)
-    );
+    )
 
     //  We are done here. Launch the game menu.
-    this.scene.start('Menu');
+    this.scene.start('Menu')
   }
 }

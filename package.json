@@ -8,7 +8,7 @@
     "dist": "gulp dist",
     "format": "eslint \"{app,gulpfile.js}/**/*.js\" --fix",
     "lint": "eslint \"{app,gulpfile.js}/**/*.js\"",
-    "start": "concurrently \"gulp\" \"nodemon server.js\""
+    "start": "npm run dist & nodemon server.js"
   },
   "devDependencies": {
     "browser-sync": "^2.26.7",
@@ -48,5 +48,6 @@
   },
   "author": "DancoVision",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/pitis/snkr-snake-game#readme"
+  "homepage": "https://bitbucket.org/pitis/snkr-snake-game#readme",
+  "proxy": "http://localhost:5000"
 }

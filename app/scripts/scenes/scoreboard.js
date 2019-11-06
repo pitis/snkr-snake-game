@@ -1,5 +1,5 @@
-import {WIDTH, LENGTH} from '@/constants/grid';
-import fontConfig from '@/constants/bitmap-fonts';
+import { WIDTH, LENGTH } from '@/constants/grid'
+import fontConfig from '@/constants/bitmap-fonts'
 
 export default class Scoreboard extends Phaser.Scene {
   /**
@@ -16,13 +16,15 @@ export default class Scoreboard extends Phaser.Scene {
 
       //  Align the scene viewport to the top of the screen, with a margin of
       //  half the length of the grid unit (8px) around its edges.
-      cameras: [{
-        x: LENGTH / 2,
-        y: LENGTH / 2,
-        width: WIDTH * LENGTH,
-        height: LENGTH
-      }]
-    });
+      cameras: [
+        {
+          x: LENGTH / 2,
+          y: LENGTH / 2,
+          width: WIDTH * LENGTH,
+          height: LENGTH
+        }
+      ]
+    })
   }
 
   /**
@@ -32,11 +34,11 @@ export default class Scoreboard extends Phaser.Scene {
    *  @param {object} data - Initialization parameters.
    *  @param {Game} data.gameScene - The host scene.
    */
-  init({gameScene}) {
+  init({ gameScene }) {
     //  Bind the maze events to update the score board.
     gameScene.events
       .on('food-eaten', points => this.setScore(points))
-      .on('snake-died', () => this.showGameOver());
+      .on('snake-died', () => this.showGameOver())
   }
 
   /**
@@ -47,13 +49,13 @@ export default class Scoreboard extends Phaser.Scene {
    */
   create(/* data */) {
     //  Add the score numerals label.
-    this.scoreLabel = this.add.bitmapText(0, 0, fontConfig.image, '0');
+    this.scoreLabel = this.add.bitmapText(0, 0, fontConfig.image, '0')
 
     //  Align this label to the right side.
-    this.gameOverLabel =
-      this.add.bitmapText(WIDTH * LENGTH, 0, fontConfig.image, 'GAME OVER')
-        .setOrigin(1, 0)
-        .setVisible(false);
+    this.gameOverLabel = this.add
+      .bitmapText(WIDTH * LENGTH, 0, fontConfig.image, 'GAME OVER')
+      .setOrigin(1, 0)
+      .setVisible(false)
   }
 
   //  -------------------------------------------------------------------------
@@ -65,7 +67,7 @@ export default class Scoreboard extends Phaser.Scene {
    *  @private
    */
   setScore(points) {
-    this.scoreLabel.setText(String(points));
+    this.scoreLabel.setText(String(points))
   }
 
   /**
@@ -74,6 +76,6 @@ export default class Scoreboard extends Phaser.Scene {
    *  @private
    */
   showGameOver() {
-    this.gameOverLabel.setVisible(true);
+    this.gameOverLabel.setVisible(true)
   }
 }

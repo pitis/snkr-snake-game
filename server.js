@@ -17,12 +17,9 @@ db.connect(err => {
   console.log('MySQL Connection successful...')
 })
 
-app.use(express.static('public'))
+app.use(express.static('dist'))
 app.use(express.json())
 app.use(cors())
-
-// var https = require('https')
-// var server = https.createServer(options, app).listen(5000)
 
 app.get('/scores', (req, res) => {
   let sql = 'select name, score from scores;'
@@ -55,6 +52,28 @@ app.post('/scores', (req, res) => {
 
 const port = process.env.PORT || 5000
 
-app.listen(port, () => {
-  console.log(`Server listening at port ${port}`)
-})
+app.listen(port, () => console.log(`Server running on ${port}`))
+
+// // Certificate
+// const privateKey = fs.readFileSync(
+//   '/etc/letsencrypt/live/snake.sneakerindustry.ro/privkey.pem',
+//   'utf8'
+// )
+// const certificate = fs.readFileSync(
+//   '/etc/letsencrypt/live/snake.sneakerindustry.ro/cert.pem',
+//   'utf8'
+// )
+// const ca = fs.readFileSync(
+//   '/etc/letsencrypt/live/snake.sneakerindustry.ro/chain.pem',
+//   'utf8'
+// )
+
+// const credentials = {
+//   key: privateKey,
+//   cert: certificate,
+//   ca: ca
+// }
+
+// https.createServer(credentials, app).listen(port, 1, () => {
+//   console.log(`Server listening at port ${port} with SSL`)
+// })
