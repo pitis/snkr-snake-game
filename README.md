@@ -15,5 +15,6 @@ A [Phaser 3][phsr] game powered by [Gulp][gulp] and [Webpack][wbpk].
    <br>DB_NAME=snkr
    <br>PORT=5000
    )
-3. In the root folder, run `npm start`
-4. That's it!
+3. The structure of the database has to be: 1 table named 'scores' and its fields: 'id'(auto increment), 'name'(varchar), score(int)
+4. In the root folder, run `npm start`
+5. Check the website, that's it!
