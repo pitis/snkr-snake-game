@@ -1,7 +1,3 @@
-# [Snkr Snake Game][game]
-
-A [Phaser 3][phsr] game powered by [Gulp][gulp] and [Webpack][wbpk].
-
 ## Instructions for Developers
 
 > NOTE: It is highly recommended that you have the latest [long-term support](https://nodejs.org/en/about/releases/) (LTS) release of Node.js installed to use this project.
