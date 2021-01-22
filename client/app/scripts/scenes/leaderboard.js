@@ -22,23 +22,19 @@ export default class Leaderboard extends Phaser.Scene {
     //this.add.image(x, y - 80, 'title')
 
     let scores
-    axios
-      .get('/leaderboard')
-      .then(res => {
-        scores = res.data
+    axios.get('/leaderboard').then((res) => {
+      const { scores } = res.data
+      scores.map((elem, i) => {
+        this.add
+          .bitmapText(
+            x,
+            y + 20 * i,
+            'font',
+            `${i + 1} ${elem.name.toUpperCase()} ${elem.score}`
+          )
+          .setOrigin(0.5, 10 - i)
       })
-      .then(data => {
-        scores.map((elem, i) => {
-          this.add
-            .bitmapText(
-              x,
-              y + 20 * i,
-              'font',
-              `${i + 1} ${elem.name.toUpperCase()} ${elem.score}`
-            )
-            .setOrigin(0.5, 10 - i)
-        })
-      })
+    })
 
     const backBtn = this.add.bitmapText(x - 300, y + 160, 'font', 'BACK')
 
